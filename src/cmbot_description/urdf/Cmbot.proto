@@ -1,0 +1,358 @@
+#VRML_SIM R2025a utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Cmbot
+# Extracted from: /home/combatant/cmbot_ws/src/cmbot_description/urdf/cmbot.urdf
+
+PROTO Cmbot [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Cmbot"  # Is `Robot.name`.
+  field  SFString    controller      "void"   # Is `Robot.controller`.
+  field  MFString    controllerArgs  []       # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""       # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE    # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE     # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE    # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Solid {
+        children [
+          Transform {
+            translation -0.500000 -0.500000 0.000000
+            scale 0.010000 0.010000 0.010000
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 0
+                }
+                geometry DEF basement Mesh {
+                  url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/basement.STL"
+                }
+              }
+            ]
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 0.000000 1.000000
+              anchor 0.000000 0.000000 0.307000
+            }
+            device [
+              RotationalMotor {
+                name "joint_1"
+                maxVelocity 10.0
+                minPosition -1.570795
+                maxPosition 1.570795
+                maxTorque 30.0
+              }
+              PositionSensor {
+                name "joint_1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.000000 0.000000 0.307000
+              children [
+                Transform {
+                  translation -0.390000 -0.390000 -0.560000
+                  scale 0.010000 0.010000 0.010000
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry DEF base_plate Mesh {
+                        url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/base_plate.STL"
+                      }
+                    }
+                  ]
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    anchor -0.020000 0.000000 0.350000
+                  }
+                  device [
+                    RotationalMotor {
+                      name "joint_2"
+                      maxVelocity 10.0
+                      minPosition -1.570795
+                      maxPosition 1.570795
+                      maxTorque 30.0
+                    }
+                    PositionSensor {
+                      name "joint_2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation -0.020000 0.000000 0.350000
+                    children [
+                      Transform {
+                        translation 0.190000 0.060000 -0.080000
+                        rotation 0.577350 -0.577351 0.577351 2.094394
+                        scale 0.010000 0.010000 0.010000
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.500000 0.500000 0.500000
+                              roughness 1.000000
+                              metalness 0
+                            }
+                            geometry DEF forward_drive_arm Mesh {
+                              url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/forward_drive_arm.STL"
+                            }
+                          }
+                        ]
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          anchor 0.000000 0.000000 0.800000
+                        }
+                        device [
+                          RotationalMotor {
+                            name "joint_3"
+                            maxVelocity 10.0
+                            minPosition -1.570795
+                            maxPosition 1.570795
+                            maxTorque 30.0
+                          }
+                          PositionSensor {
+                            name "joint_3_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0.000000 0.000000 0.800000
+                          children [
+                            Transform {
+                              translation -0.030000 -0.400000 -0.060000
+                              rotation 0.577351 0.577350 0.577351 2.094394
+                              scale 0.010000 0.010000 0.010000
+                              children [
+                                Shape {
+                                  appearance PBRAppearance {
+                                    baseColor 0.500000 0.500000 0.500000
+                                    roughness 1.000000
+                                    metalness 0
+                                  }
+                                  geometry DEF horizontal_arm Mesh {
+                                    url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/horizontal_arm.STL"
+                                  }
+                                }
+                              ]
+                            }
+                            Solid {
+                              translation 0.000000 0.820000 0.000000
+                              children [
+                                Transform {
+                                  translation 0.000000 -0.050000 -0.150000
+                                  rotation 0.000000 0.000000 1.000000 1.570795
+                                  scale 0.010000 0.010000 0.010000
+                                  children [
+                                    Shape {
+                                      appearance PBRAppearance {
+                                        baseColor 0.500000 0.500000 0.500000
+                                        roughness 1.000000
+                                        metalness 0
+                                      }
+                                      geometry DEF claw_support Mesh {
+                                        url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/claw_support.STL"
+                                      }
+                                    }
+                                  ]
+                                }
+                                HingeJoint {
+                                  jointParameters HingeJointParameters {
+                                    axis 0.000000 0.000000 1.000000
+                                    anchor -0.040000 0.130000 -0.100000
+                                  }
+                                  device [
+                                    RotationalMotor {
+                                      name "joint_4"
+                                      maxVelocity 10.0
+                                      minPosition -1.570795
+                                      maxTorque 30.0
+                                    }
+                                    PositionSensor {
+                                      name "joint_4_sensor"
+                                    }
+                                  ]
+                                  endPoint Solid {
+                                    translation -0.040000 0.130000 -0.100000
+                                    children [
+                                      Transform {
+                                        translation -0.100000 0.500000 -0.100000
+                                        rotation 0.000000 0.000000 -1.000000 1.570795
+                                        scale 0.010000 0.010000 0.010000
+                                        children [
+                                          Shape {
+                                            appearance PBRAppearance {
+                                              baseColor 0.500000 0.500000 0.500000
+                                              roughness 1.000000
+                                              metalness 0
+                                            }
+                                            geometry DEF right_finger Mesh {
+                                              url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/right_finger.STL"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                    name "right_gripper"
+                                    boundingObject Pose {
+                                      translation -0.100000 0.500000 -0.100000
+                                      rotation 0.000000 0.000000 -1.000000 1.570795
+                                      children [
+                                        USE right_finger
+                                      ]
+                                    }
+                                    physics Physics {
+                                      density -1
+                                      mass 0.010000
+                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                    }
+                                  }
+                                }
+                                HingeJoint {
+                                  jointParameters HingeJointParameters {
+                                    axis 0.000000 0.000000 1.000000
+                                    anchor -0.220000 0.130000 -0.100000
+                                  }
+                                  device [
+                                    RotationalMotor {
+                                      name "joint_5"
+                                      maxVelocity 10.0
+                                      maxPosition 1.570795
+                                      maxTorque 30.0
+                                    }
+                                    PositionSensor {
+                                      name "joint_5_sensor"
+                                    }
+                                  ]
+                                  endPoint Solid {
+                                    translation -0.220000 0.130000 -0.100000
+                                    children [
+                                      Transform {
+                                        translation -0.040000 0.500000 -0.100000
+                                        rotation 0.000000 0.000000 -1.000000 1.570795
+                                        scale 0.010000 0.010000 0.010000
+                                        children [
+                                          Shape {
+                                            appearance PBRAppearance {
+                                              baseColor 0.500000 0.500000 0.500000
+                                              roughness 1.000000
+                                              metalness 0
+                                            }
+                                            geometry DEF left_finger Mesh {
+                                              url "/home/combatant/cmbot_ws/src/cmbot_description/meshes/left_finger.STL"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                    name "left_gripper"
+                                    boundingObject Pose {
+                                      translation -0.040000 0.500000 -0.100000
+                                      rotation 0.000000 0.000000 -1.000000 1.570795
+                                      children [
+                                        USE left_finger
+                                      ]
+                                    }
+                                    physics Physics {
+                                      density -1
+                                      mass 0.010000
+                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                    }
+                                  }
+                                }
+                              ]
+                              name "claw_support"
+                              boundingObject Pose {
+                                translation 0.000000 -0.050000 -0.150000
+                                rotation 0.000000 0.000000 1.000000 1.570795
+                                children [
+                                  USE claw_support
+                                ]
+                              }
+                              physics Physics {
+                                density -1
+                                mass 0.050000
+                                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                              }
+                            }
+                          ]
+                          name "horizontal_arm"
+                          boundingObject Pose {
+                            translation -0.030000 -0.400000 -0.060000
+                            rotation 0.577351 0.577350 0.577351 2.094394
+                            children [
+                              USE horizontal_arm
+                            ]
+                          }
+                          physics Physics {
+                            density -1
+                            mass 0.100000
+                            centerOfMass [ 0.000000 0.000000 0.000000 ]
+                          }
+                        }
+                      }
+                    ]
+                    name "forward_drive_arm"
+                    boundingObject Pose {
+                      translation 0.190000 0.060000 -0.080000
+                      rotation 0.577350 -0.577351 0.577351 2.094394
+                      children [
+                        USE forward_drive_arm
+                      ]
+                    }
+                    physics Physics {
+                      density -1
+                      mass 0.100000
+                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                    }
+                  }
+                }
+              ]
+              name "base_plate"
+              boundingObject Pose {
+                translation -0.390000 -0.390000 -0.560000
+                children [
+                  USE base_plate
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.100000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+              }
+            }
+          }
+        ]
+        name "base_link"
+        boundingObject Pose {
+          translation -0.500000 -0.500000 0.000000
+          children [
+            USE basement
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 1.000000
+          centerOfMass [ 0.000000 0.000000 0.000000 ]
+        }
+      }
+    ]
+    name IS name
+  }
+}

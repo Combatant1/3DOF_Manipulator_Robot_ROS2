@@ -1,0 +1,10 @@
+<library path="cmbot_controller">
+    <class name="cmbot_controller/CmbotInterface"
+      type="cmbot_controller::CmbotInterface"
+      base_class_type="hardware_interface::SystemInterface"
+    >
+      <description>
+        Cmbot Hardware Interface
+      </description>
+    </class>
+  </library>
